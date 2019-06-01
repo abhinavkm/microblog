@@ -6,6 +6,7 @@ from app.models import User
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
     user = {'username':'Abhinav'}
     posts = [
@@ -34,4 +35,3 @@ def login():
         login_user(user,remember=form.remember_me.data)
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
-        
